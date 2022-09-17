@@ -1,0 +1,15 @@
+---
+- hosts: server
+  tasks:
+     - name: install git 
+       yum: git
+       state: present
+     - name: Copy file with owner and permissions
+       ansible.builtin.copy:
+        src: test
+        dest: /Desktop
+        owner:  root
+     - name: install apache server 
+       yum: httpd
+       state: present
+
