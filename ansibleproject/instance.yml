@@ -5,13 +5,14 @@
        yum:
         name: git
         state: present
-     - name: Copy file with owner and permissions
-       ansible.builtin.copy:
-        src: test
-        dest: /Desktop
-        owner:  root
      - name: install apache server 
        yum: 
         name: httpd
         state: present
+     - name: Copy file with owner and permissions
+       ansible.builtin.copy:
+        src: /test
+        dest: /Desktop/test
+        owner:  root
+
 
