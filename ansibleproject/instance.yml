@@ -26,7 +26,7 @@
         path: ~/Desktop/"{{dir_name}}"
         state: directory
      - name: copy Templete
-       templete:
+       template:
         src: ~/Desktop//linux/ansibleproject/serverconfig.g2
         dest: ~/Desktop
        notify: create file
