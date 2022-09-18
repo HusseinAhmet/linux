@@ -1,15 +1,50 @@
 ---
 - hosts: server
+  vars: 
+   servername: "YAaaw"
+  vars_prompt:
+    - name: dir_name
+      prompt: Enter dir name?
+      private: no
   tasks:
      - name: install apache server 
        ansible.builtin.service: 
         name: httpd
         state: started
         enabled: yes 
+     - name: install nginx server 
+       ansible.builtin.service: 
+        name: nginx
+        state: started
+        enabled: yes 
      - name: Copy file with owner and permissions
        ansible.builtin.copy:
         src: ~/test
         dest: ~/Desktop
+     - name: create directory
+       file:
+        path: ~/Desktop/"{{dir_name}}"
+        state: directory
+     - name: copy Templete
+       templete:
+        src: ~/Desktop//linux/ansibleproject/serverconfig.g2
+        dest: ~/Desktop
+       notify: create file
+     - name: create user x
+       user:
+        name: "{{ item }}"
+        state: present
+       with_items:
+        - ahmed
+        - mahmoud
+        - kaw
+        - ansible
+
+  handlers: 
+      - name: create file 
+        file:
+          path: ~/Desktop/handlerfile
+          state: touch
         
 
 
