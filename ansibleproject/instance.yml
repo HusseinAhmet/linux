@@ -12,18 +12,13 @@
         name: httpd
         state: started
         enabled: yes 
-     - name: install nginx server 
-       ansible.builtin.service: 
-        name: nginx
-        state: started
-        enabled: yes 
      - name: Copy file with owner and permissions
        ansible.builtin.copy:
         src: ~/test
         dest: ~/Desktop
      - name: create directory
        file:
-        path: ~/Desktop/"{{dir_name}}"
+        path: ~/Desktop/"{{ dir_name }}"
         state: directory
      - name: copy Templete
        template:
