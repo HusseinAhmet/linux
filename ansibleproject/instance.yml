@@ -22,7 +22,7 @@
         state: directory
      - name: copy Templete
        template:
-        src: ~/Desktop/git\ projects/linux/ansibleproject/serverconfig.g2
+        src: ~/Desktop/git projects/linux/ansibleproject/serverconfig.g2
         dest: ~/Desktop
        notify: create file
      - name: create user x
